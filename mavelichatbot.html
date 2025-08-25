@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maveli Online | Onam 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('pookalam-bg.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #f5c542, #f28e1c);
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+      font-size: 2rem;
+      color: white;
+      font-weight: bold;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 40px;
+      gap: 40px;
+      position: relative;
+      flex-wrap: wrap;
+    }
+    .avatar-container {
+      position: relative;
+      max-width: 300px;
+    }
+    .maveli-img {
+      width: 100%;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .speech-bubble {
+      position: absolute;
+      top: -50px;
+      left: 10px;
+      background: white;
+      border: 3px solid #f5c542;
+      border-radius: 15px;
+      padding: 10px 15px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+      opacity: 1; /* make it visible by default */
+      max-width: 220px;
+      z-index: 10;
+    }
+    .chatbox {
+      width: 400px;
+      height: 600px;
+      border: 5px solid #f5c542;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    footer {
+      margin-top: 30px;
+      padding: 15px;
+      background: #f28e1c;
+      color: white;
+      text-align: center;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>🌸 Onam SJCET PALAI 2025 🌸</header>
+
+  <div class="container">
+    <!-- Avatar + Bubble -->
+    <div class="avatar-container">
+      <img src="C:\Users\student.DESKTOP-QAK7S3T\Desktop\mavalichatrbot\nutral.png" alt="Maveli" class="maveli-img" id="maveli-avatar">
+      <div class="speech-bubble" id="speech-bubble">Ellavarkkum Onashamsakal! 🌸</div>
+    </div>
+
+    <!-- Landbot Chat using iframe -->
+    <div class="chatbox">
+      <iframe src="https://landbot.online/v3/H-3105553-YS938PCJ92CSLF7D/index.html"
+              width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+  </div>
+
+  <footer>👑 Powered by Maveli Bot | College Onam Committee 2025</footer>
+
+  <!-- TTS Audio -->
+  <audio id="maveliAudio" src="maveli-greeting.mp3"></audio>
+
+  <script>
+    const avatar = document.getElementById("maveli-avatar");
+    const bubble = document.getElementById("speech-bubble");
+    const audio = document.getElementById("maveliAudio");
+
+    // Show speech bubble (static for now)
+    function showBubble(text, duration = 4000){
+      bubble.innerText = text;
+      bubble.style.opacity = 1;
+      setTimeout(()=>{ bubble.style.opacity = 0; }, duration);
+    }
+
+    // Animate avatar while audio plays
+    audio.addEventListener("play", () => avatar.src = "maveli-talking.png");
+    audio.addEventListener("ended", () => avatar.src = "maveli-neutral.png");
+
+    // Play greeting audio once on first click
+    document.addEventListener("click", () => { audio.play().catch(()=>{}); }, {once:true});
+  </script>
+</body>
+</html>
